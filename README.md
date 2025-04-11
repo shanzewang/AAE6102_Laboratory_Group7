@@ -138,7 +138,7 @@ To evaluate the effectiveness of RTKlib, it is beneficial to compare it with oth
 
 ## 3.1 Comparison Criteria
 
-### 1. Accuracy
+### 3.1.1. Accuracy
 - **RTKlib**:  
   RTKlib can achieve high accuracy in open-sky environments, especially when parameters are carefully tuned. However, in urban or dynamic environments with significant multipath effects or signal obstructions, its performance can degrade. Achieving consistent accuracy often requires extensive parameter adjustments by the user.  
 
@@ -149,7 +149,7 @@ To evaluate the effectiveness of RTKlib, it is beneficial to compare it with oth
 
 ---
 
-### 2. Ease of Use
+### 3.1.2. Ease of Use
 - **RTKlib**:  
   RTKlib has a steep learning curve. Users must manually configure input files, adjust parameters, and interpret results. It lacks a modern graphical interface (GUI), which makes it less accessible to beginners or non-specialists.  
 
@@ -160,7 +160,7 @@ To evaluate the effectiveness of RTKlib, it is beneficial to compare it with oth
 
 ---
 
-### 3. Flexibility
+### 3.1.3. Flexibility
 - **RTKlib**:  
   As an open-source library, RTKlib offers unparalleled flexibility. Users can modify the source code, add support for new algorithms or GNSS constellations, and customize the software for specific use cases. This makes it ideal for research and development.  
 
@@ -171,7 +171,7 @@ To evaluate the effectiveness of RTKlib, it is beneficial to compare it with oth
 
 ---
 
-### 4. Computational Efficiency
+### 3.1.4. Computational Efficiency
 - **RTKlib**:  
   RTKlib's computational efficiency is moderate. While it is suitable for post-processing on standard hardware, it can be slower in real-time applications or when using advanced error correction models (e.g., IONEX, Saastamoinen).  
 
