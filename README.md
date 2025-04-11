@@ -90,43 +90,47 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 
 ## 2.1 DGPS (Differential GPS)
 **Strengths:**
-- **Flexibility:** Can be used in various environments with different base station configurations.
-- **Robustness:** Provides improved accuracy over standalone GPS by correcting errors.
-- **Ease of Use:** Relatively straightforward to implement with existing infrastructure.
+- **Flexibility:** DGPS can be adapted to various operational scenarios, including both stationary and mobile applications. It can be integrated with existing GPS infrastructure, making it versatile for different use cases.
+- **Robustness:** By using correction data from a nearby base station, DGPS significantly reduces errors caused by atmospheric conditions and satellite clock drift, enhancing positional accuracy.
+- **Ease of Use:** The setup for DGPS is relatively straightforward, especially when using commercial services that provide correction data, reducing the complexity for end-users.
 
 **Limitations:**
-- **Computational Efficiency:** Requires additional processing to handle differential corrections.
-- **Lack of Specific Features:** May not provide the precision needed for high-accuracy applications compared to RTK or PPP.
+- **Computational Efficiency:** The need to process correction data in real-time can increase computational demands, particularly in environments with limited processing power.
+- **Lack of Specific Features:** While DGPS improves accuracy, it may not achieve the centimeter-level precision required for applications like precision agriculture or autonomous vehicle navigation.
+
 
 ## 2.2 Kinematic (EKF - Extended Kalman Filter)
 **Strengths:**
-- **Flexibility:** Adaptable to different motion models and sensor inputs.
-- **Robustness:** Can handle dynamic environments and varying motion states.
-- **Ease of Use:** Widely used with extensive documentation and community support.
+- **Flexibility:** The EKF can be tailored to various dynamic models, making it suitable for applications ranging from pedestrian navigation to high-speed vehicular tracking.
+- **Robustness:** EKF is capable of filtering out noise and providing stable estimates even in environments with erratic motion or signal loss.
+- **Ease of Use:** With extensive literature and community support, implementing EKF is accessible for developers, and many software libraries offer built-in support.
 
 **Limitations:**
-- **Computational Efficiency:** Computationally intensive due to the recursive nature of the filter.
-- **Lack of Specific Features:** May require significant tuning for optimal performance in specific scenarios.
+- **Computational Efficiency:** The recursive nature of the EKF, involving matrix operations, can be computationally expensive, especially for systems with limited resources.
+- **Lack of Specific Features:** EKF requires careful tuning of noise parameters, and its performance can degrade if the model assumptions do not match the real-world scenario.
+
 
 ## 2.3 PPP Kinematic (Precise Point Positioning)
 **Strengths:**
-- **Flexibility:** Does not require a base station, suitable for global applications.
-- **Robustness:** Provides high accuracy with precise satellite data.
-- **Ease of Use:** Can be implemented with a single receiver, reducing infrastructure needs.
+- **Flexibility:** PPP does not rely on local base stations, making it ideal for remote or global applications where setting up infrastructure is impractical.
+- **Robustness:** By utilizing precise satellite orbit and clock data, PPP achieves high accuracy, making it suitable for scientific and surveying applications.
+- **Ease of Use:** With a single receiver setup, PPP reduces the complexity and cost associated with deploying multiple base stations.
 
 **Limitations:**
-- **Computational Efficiency:** High computational demand due to the need for precise satellite corrections.
-- **Lack of Specific Features:** Convergence time can be long, affecting real-time applications.
+- **Computational Efficiency:** The need for processing precise corrections and handling long convergence times can be demanding, particularly for real-time applications.
+- **Lack of Specific Features:** The initial convergence period can be lengthy, which may not be suitable for applications requiring immediate high accuracy.
+
 
 ## 2.4 Single (Standalone GPS)
 **Strengths:**
-- **Flexibility:** Simple setup with minimal requirements.
-- **Robustness:** Basic level of robustness for general navigation.
-- **Ease of Use:** Easiest to implement with minimal configuration.
+- **Flexibility:** Standalone GPS is the most basic form of positioning, requiring only a GPS receiver, making it highly accessible and easy to deploy.
+- **Robustness:** Provides a basic level of robustness for general navigation tasks where high precision is not critical.
+- **Ease of Use:** With minimal setup and no need for additional data sources, standalone GPS is user-friendly and cost-effective.
 
 **Limitations:**
-- **Computational Efficiency:** Generally efficient but lacks advanced processing.
-- **Lack of Specific Features:*
+- **Computational Efficiency:** While efficient in terms of processing, standalone GPS lacks the advanced error correction capabilities of other methods.
+- **Lack of Specific Features:** It is susceptible to errors from atmospheric conditions, multipath effects, and satellite geometry, limiting its accuracy.
+
 
 # 3 Comparison with Other Libraries
 
