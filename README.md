@@ -134,7 +134,7 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 
 # 3 Comparison with Other Libraries
 
-To evaluate the effectiveness of RTKlib, it is beneficial to compare it with other GNSS libraries or commercial solutions based on **Accuracy**, **Ease of Use**, **Flexibility**, and **Computational Efficiency**. For this comparison, we will hypothetically compare RTKlib with NovAtel's Waypoint Software Suite, a well-known commercial GNSS library.
+For this comparison, we will hypothetically compare RTKlib with NovAtel's Waypoint Software Suite, a well-known commercial GNSS library.
 
 ## 3.1 Comparison Criteria
 
