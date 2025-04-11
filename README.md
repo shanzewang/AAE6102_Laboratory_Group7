@@ -3,7 +3,7 @@
 
 This section details key parameters tuned for four RTKlib positioning algorithms and their effects on performance metrics across Urban and Dynamic datasets.
 
-## Single Algorithm (Standard Point Positioning)
+## 1.1 Single Algorithm (Standard Point Positioning)
 
 ### Parameters Tuned
 
@@ -22,7 +22,7 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 | Correction Models | IONEX typically outperforms Klobuchar | Complex models increase processing time by 10-20% | Minimal impact on solution availability |
 | Multiple GNSS | Improves accuracy by 20-40% in difficult environments | Each system adds 15-25% computation time | Significantly improves continuity in Urban scenarios |
 
-## DGPS Algorithm (Differential GPS)
+## 1.2 DGPS Algorithm (Differential GPS)
 
 ### Parameters Tuned
 
@@ -40,7 +40,7 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 | Correction Type | Code+phase improves accuracy by 30-50% | Code+phase increases computation by 15-25% | Code+phase generally more sensitive to data quality |
 | Multiple GNSS | Improves accuracy by 20-40% in Urban areas | Each system adds 15-20% computation time | Significantly improves availability in obstructed environments |
 
-## Kinematic Algorithm (RTK with EKF)
+## 1.3 Kinematic Algorithm (RTK with EKF)
 
 ### Parameters Tuned
 
@@ -58,7 +58,7 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 | Process Noise | Lower values smoother; higher values track rapid movements better | Complex models increase computation by 10-15% | Higher values better track dynamic motion |
 | Multiple GNSS | Improves accuracy by 25-45% in obstructed environments | Each constellation adds 20-30% computation | Dramatically improves continuity in Urban environments |
 
-## PPP-Kinematic Algorithm
+## 1.4 PPP-Kinematic Algorithm
 
 ### Parameters Tuned
 
@@ -87,6 +87,46 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 
 
 # 2 Strengths and Limitations
+
+## 2.1 DGPS (Differential GPS)
+**Strengths:**
+- **Flexibility:** Can be used in various environments with different base station configurations.
+- **Robustness:** Provides improved accuracy over standalone GPS by correcting errors.
+- **Ease of Use:** Relatively straightforward to implement with existing infrastructure.
+
+**Limitations:**
+- **Computational Efficiency:** Requires additional processing to handle differential corrections.
+- **Lack of Specific Features:** May not provide the precision needed for high-accuracy applications compared to RTK or PPP.
+
+## 2.2 Kinematic (EKF - Extended Kalman Filter)
+**Strengths:**
+- **Flexibility:** Adaptable to different motion models and sensor inputs.
+- **Robustness:** Can handle dynamic environments and varying motion states.
+- **Ease of Use:** Widely used with extensive documentation and community support.
+
+**Limitations:**
+- **Computational Efficiency:** Computationally intensive due to the recursive nature of the filter.
+- **Lack of Specific Features:** May require significant tuning for optimal performance in specific scenarios.
+
+## 2.3 PPP Kinematic (Precise Point Positioning)
+**Strengths:**
+- **Flexibility:** Does not require a base station, suitable for global applications.
+- **Robustness:** Provides high accuracy with precise satellite data.
+- **Ease of Use:** Can be implemented with a single receiver, reducing infrastructure needs.
+
+**Limitations:**
+- **Computational Efficiency:** High computational demand due to the need for precise satellite corrections.
+- **Lack of Specific Features:** Convergence time can be long, affecting real-time applications.
+
+## 2.4 Single (Standalone GPS)
+**Strengths:**
+- **Flexibility:** Simple setup with minimal requirements.
+- **Robustness:** Basic level of robustness for general navigation.
+- **Ease of Use:** Easiest to implement with minimal configuration.
+
+**Limitations:**
+- **Computational Efficiency:** Generally efficient but lacks advanced processing.
+- **Lack of Specific Features:*
 
 # 3 Comparison with Other Libraries
 
