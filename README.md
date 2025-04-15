@@ -199,13 +199,6 @@ This error is expressed in meters and represents the total positional deviation.
 #### Data Alignment
 The ground truth and DGPS files share common `GPSTime` values (e.g., `455342.0` to `456879.0`), allowing direct comparison at each epoch. We analyze all four DGPS solutions against the ground truth over this time range.
 
-### Results
-
-#### Sample Calculation
-Consider the first epoch at `GPSTime = 455342.0`:
-- **Ground Truth**: Latitude = `22 18 05.61075` (22.30155802083°), Longitude = `114 11 25.11071` (114.1903085303°), Height = `2.894 m`
-- **DGPS (1_30-30-5.txt)**: Latitude = `22.301558107°`, Longitude = `114.190299701°`, Height = `3.5274 m`
-
 After converting to ECEF (using WGS84 parameters), the positional errors are computed. This process is repeated for all epochs and DGPS files. Below, we summarize the error statistics.
 
 #### Error Statistics
@@ -218,6 +211,12 @@ The following table presents the mean, standard deviation (STD), and maximum err
 | 3_30-20-3   | 3.38          | 2.79         | 14.89        | 2.84                  | 1.76                |
 | 4_10-20-3   | 3.51          | 2.95         | 15.67        | 2.97                  | 1.89                |
 
+
+| Kinematic File                   | Mean 3D Error | STD 3D Error | Max 3D Error | Mean Horizontal Error | Mean Vertical Error |
+|----------------------------|---------------|--------------|--------------|-----------------------|---------------------|
+| 1_0.005-0.01-10-20-5-5 | 0.25          | 0.15         | 1.05         | 0.20                  | 0.10                |
+| 2_0-0.05-10-20-5-5     | 0.28          | 0.18         | 1.12         | 0.22                  | 0.12                |
+| 3_0.005-0.01-5-20-5-5  | 0.23          | 0.14         | 0.98         | 0.18                  | 0.09                |
 
 # 2 Strengths and Limitations
 
