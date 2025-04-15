@@ -218,6 +218,13 @@ The following table presents the mean, standard deviation (STD), and maximum err
 | 2_0-0.05-10-20-5-5     | 0.28          | 0.18         | 1.12         | 0.22                  | 0.12                |
 | 3_0.005-0.01-5-20-5-5  | 0.23          | 0.14         | 0.98         | 0.18                  | 0.09                |
 
+| Single File       | Mean 3D Error (m) | STD 3D Error (m) | Max 3D Error (m) | Mean Horizontal Error (m) | Mean Vertical Error (m) |
+|-------------------|-------------------|------------------|------------------|---------------------------|-------------------------|
+| Mask_5°.txt       | 6.52               | 1.01              | 15.02             | 3.23                       | 5.13                     |
+| Mask_10°.txt      | 6.65               | 1.14              | 16.30             | 3.74                       | 5.51                     |
+| Mask_15°.txt      | 6.84               | 1.28              | 17.60             | 3.25                       | 5.64                     |
+| Mask_20°.txt      | 7.06               | 1.38              | 18.05             | 3.76                       | 5.35                     |
+
 # 2 Strengths and Limitations
 
 ## 2.1 DGPS (Differential GPS)
