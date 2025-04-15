@@ -254,7 +254,7 @@ Parameter optimization should be approached as an iterative process rather than 
 - **Environment-Specific Tuning**: Adjust parameters based on the specific environment - stricter settings for urban areas, more relaxed for open areas
 - **Performance Monitoring**: Continuously evaluate quality indicators (Q values) and solution accuracy during processing
 - **Adaptive Adjustment**: Be prepared to relax certain parameters (elevation mask, differential age) if solution availability becomes problematic
-```
+
 
 # 2 Strengths and Limitations
 
