@@ -7,7 +7,9 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 
 ## Parameter Adjustments and Effects
 The adjusted parameters are shown in the figure below:
+
 ![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/DGPSDGNSS/setting1.png)
+
 ![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/DGPSDGNSS/setting2.png)
 
 ### Reduction of Max Age of Differential Corrections (from 30.0s to 10.0s)
