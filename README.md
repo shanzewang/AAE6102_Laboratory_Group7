@@ -55,9 +55,7 @@ The comparison results of the parameters are shown in the following figure:
 ## Parameter Adjustments and Effects
 The adjusted parameters are shown in the figure below:
 
-![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/setting1.png)
-
-![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/setting2.png)
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/setting1.png) ![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/setting2.png)
 
 ### Cycle Slip Detection Threshold (Slip Thresh: Doppler/Geom-Free)
 
@@ -110,7 +108,9 @@ The adjusted parameters are shown in the figure below:
 - No significant performance difference was observed between the two configurations.
 - This suggests that satellite availability was sufficient throughout the test area, with the number of visible satellites consistently above the threshold values in both configurations.
 
+The comparison results of the parameters are shown in the following figure:
 
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/figs/compare.png)
 
 ## 1.4 PPP-Kinematic Algorithm
 
