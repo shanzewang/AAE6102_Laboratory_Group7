@@ -158,43 +158,39 @@ $\[
 \text{Decimal Degrees} = \text{Degrees} + \frac{\text{Minutes}}{60} + \frac{\text{Seconds}}{3600}
 \]$
 
-For example, the first ground truth entry at `UTCTime = 1621578524.00`:
-- Latitude: `22 18 05.61075` → \( 22 + \frac{18}{60} + \frac{5.61075}{3600} = 22.30155802083 \) degrees
-- Longitude: `114 11 25.11071` → \( 114 + \frac{11}{60} + \frac{25.11071}{3600} = 114.1903085303 \) degrees
-
 The DGPS results are already in decimal degrees (e.g., `22.301558107` and `114.190299701` from `1_30-30-5.txt`). However, direct subtraction of latitude and longitude is not appropriate for error analysis due to the spherical nature of the Earth. Instead, we convert both sets of coordinates to the ECEF system, which represents positions in a 3D Cartesian framework centered at the Earth's center. The ECEF coordinates \((X, Y, Z)\) are calculated using:
 
-\[
+$\[
 X = (N + h) \cos(\phi) \cos(\lambda)
-\]
-\[
+\]$
+$\[
 Y = (N + h) \cos(\phi) \sin(\lambda)
-\]
-\[
+\]$
+$\[
 Z = \left[N (1 - e^2) + h\right] \sin(\phi)
-\]
+\]$
 
 Where:
-- \(\phi\) = latitude (radians)
-- \(\lambda\) = longitude (radians)
-- \(h\) = ellipsoidal height (meters, from the ground truth or DGPS files)
-- \(N = \frac{a}{\sqrt{1 - e^2 \sin^2(\phi)}}\) = radius of curvature in the prime vertical
-- \(a = 6378137 \, \text{m}\) = WGS84 semi-major axis
-- \(e^2 = 0.00669437999014\) = WGS84 eccentricity squared
+- $\(\phi\)$ = latitude (radians)
+- $\(\lambda\)$ = longitude (radians)
+- $\(h\)$ = ellipsoidal height (meters, from the ground truth or DGPS files)
+- $\(N = \frac{a}{\sqrt{1 - e^2 \sin^2(\phi)}}\)$ = radius of curvature in the prime vertical
+- $\(a = 6378137 \, \text{m}\)$ = WGS84 semi-major axis
+- $\(e^2 = 0.00669437999014\)$ = WGS84 eccentricity squared
 
 The ground truth provides height (`H-Ell`) in meters (e.g., `2.894 m`), while the DGPS files provide height in meters (e.g., `3.5274 m`). These values are used directly in the ECEF conversion.
 
 #### Error Calculation
-For each timestamp (aligned by `GPSTime`), the ECEF coordinates of the ground truth (\(X_{truth}, Y_{truth}, Z_{truth}\)) and each DGPS solution (\(X_{DGPS}, Y_{DGPS}, Z_{DGPS}\)) are computed. The 3D position error is then calculated as the Euclidean distance:
+For each timestamp (aligned by `GPSTime`), the ECEF coordinates of the ground truth ($\(X_{truth}, Y_{truth}, Z_{truth}\$)) and each DGPS solution ($\(X_{DGPS}, Y_{DGPS}, Z_{DGPS}\$)) are computed. The 3D position error is then calculated as the Euclidean distance:
 
-\[
+$\[
 \text{Error} = \sqrt{(X_{DGPS} - X_{truth})^2 + (Y_{DGPS} - Y_{truth})^2 + (Z_{DGPS} - Z_{truth})^2}
-\]
+\]$
 
 This error is expressed in meters and represents the total positional deviation. Additionally, we compute the horizontal error (in the X-Y plane) and vertical error (Z-axis) for a comprehensive analysis:
 
-- Horizontal Error: \(\sqrt{(X_{DGPS} - X_{truth})^2 + (Y_{DGPS} - Y_{truth})^2}\)
-- Vertical Error: \(|Z_{DGPS} - Z_{truth}|\)
+- Horizontal Error: $\(\sqrt{(X_{DGPS} - X_{truth})^2 + (Y_{DGPS} - Y_{truth})^2}\)$
+- Vertical Error: $\(|Z_{DGPS} - Z_{truth}|\)$
 
 #### Data Alignment
 The ground truth and DGPS files share common `GPSTime` values (e.g., `455342.0` to `456879.0`), allowing direct comparison at each epoch. We analyze all four DGPS solutions against the ground truth over this time range.
