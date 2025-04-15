@@ -216,10 +216,10 @@ The following table presents the mean, standard deviation (STD), and maximum err
 
 | Single File       | Mean 3D Error (m) | STD 3D Error (m) | Max 3D Error (m) | Mean Horizontal Error (m) | Mean Vertical Error (m) |
 |-------------------|-------------------|------------------|------------------|---------------------------|-------------------------|
-| Mask_5°       | 6.52               | 1.01              | 15.02             | 3.23                       | 5.13                     |
-| Mask_10°      | 6.65               | 1.14              | 16.30             | 3.74                       | 5.51                     |
-| Mask_15°      | 6.84               | 1.28              | 16.60             | 3.25                       | 5.64                     |
-| Mask_20°      | 7.06               | 1.38              | 16.05             | 3.76                       | 5.35                     |
+| Mask_5°       | 6.62               | 1.17              | 16.22             | 3.63                       | 5.36                     |
+| Mask_10°      | 6.63               | 1.14              | 16.35             | 3.74                       | 5.57                     |
+| Mask_15°      | 6.74               | 1.28              | 17.02             | 3.37                       | 5.67                     |
+| Mask_20°      | 6.36               | 1.11              | 16.05             | 3.25                       | 5.11                     |
 
 
 # 1.5 Conclusion: Parameter Tuning Recommendations for GNSS Processing
