@@ -112,32 +112,38 @@ The comparison results of the parameters are shown in the following figure:
 
 ![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/figs/compare.png)
 
-## 1.4 PPP-Kinematic Algorithm
+## 1.3 Single Algorithm (Standard Point Positioning)
+## Parameter Adjustments and Effects
+The adjusted parameters are shown in the figure below:
 
-### Parameters Tuned
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/single/Elevation%20Mask%C2%B0_5_setting1.png) ![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/single/Elevation%20Mask%C2%B0_5_setting2.png)
 
-- **Precise Products**: Final, Rapid, Ultra-rapid orbits and clocks
-- **Process Noise**: Position, troposphere, and clock parameters
-- **Troposphere Estimation**: Fixed model or estimated as states
-- **Ambiguity Resolution**: Float or Fixed
+## Elevation Mask Parameter Effects
 
-### Effects
+### Parameter Description:
+The Elevation Mask determines the minimum elevation angle at which satellite signals are included in the position solution. Satellites below this angle are excluded from calculations.
 
-| Parameter | Accuracy | Processing Speed | Robustness |
-|-----------|----------|-----------------|------------|
-| Precise Products | Final products improve accuracy by 15-30% over ultra-rapid | Minimal impact once loaded | Higher quality products improve solution stability |
-| Process Noise | Lower noise (10^-5 m²/s) for low dynamics; higher (10^-3 m²/s) for high dynamics | More states increase computation by 20-30% | Higher values better accommodate unexpected movements |
-| Troposphere Estimation | Estimated troposphere improves vertical accuracy by 30-50% | Increases computation load by 15-25% | Improves performance in variable weather conditions |
-| Multiple GNSS | Improves accuracy and convergence speed by 25-40% | Each constellation adds 25-35% computation | Significantly improves solution continuity and convergence |
+### Impact of Different Settings:
 
-## Cross-Algorithm Comparison
+- **Lower Elevation Masks** (e.g., 15°):
+  - Advantages: Increases the number of visible satellites, potentially improving geometric dilution of precision (GDOP) and solution availability
+  - Disadvantages: Includes satellites with signals that travel through more atmosphere and are more susceptible to multipath effects, potentially degrading position accuracy
 
-| Environment | Recommended Parameter Adjustments |
-|-------------|----------------------------------|
-| Urban | Higher elevation masks (15°-20°); stricter SNR thresholds; multiple GNSS systems |
-| Dynamic | Higher process noise; kinematic modes; shorter update intervals |
-| Computation Priority | Single < DGPS < Kinematic < PPP-Kinematic |
-| Convergence Time | Single (immediate) < DGPS (<30s) < Kinematic (30s-5min) < PPP-Kinematic (5-30min) |
+- **Higher Elevation Masks** (e.g., 20°):
+  - Advantages: Excludes low-quality signals affected by multipath and atmospheric errors, potentially improving position accuracy and solution stability
+  - Disadvantages: Reduces the number of usable satellites, potentially weakening satellite geometry
+
+### Optimal Setting for Urban Environments:
+The 20° elevation mask provided the best results for this urban dataset, likely because:
+
+- Urban environments typically experience significant multipath effects from buildings and other structures
+- Signal reflections from low-elevation satellites are particularly problematic in built-up areas
+- The improvement in signal quality from excluding low-elevation satellites outweighed the reduction in satellite availability
+
+The comparison results of the parameters are shown in the following figure:
+
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/single/figs/compare_5_10_15_20.png)
+
 
 
 # 2 Strengths and Limitations
