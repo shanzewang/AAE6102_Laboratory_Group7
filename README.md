@@ -154,9 +154,9 @@ In this section, we perform an error analysis of the Differential Global Positio
 #### Coordinate Transformation
 The ground truth latitude and longitude in `truth—UrbanNav_whampoa_raw.txt` are given in DMS format (e.g., `22 18 05.61075` for latitude and `114 11 25.11071` for longitude). These values need to be converted to decimal degrees for consistency with the DGPS results. The conversion formula is:
 
-\[
+$\[
 \text{Decimal Degrees} = \text{Degrees} + \frac{\text{Minutes}}{60} + \frac{\text{Seconds}}{3600}
-\]
+\]$
 
 For example, the first ground truth entry at `UTCTime = 1621578524.00`:
 - Latitude: `22 18 05.61075` → \( 22 + \frac{18}{60} + \frac{5.61075}{3600} = 22.30155802083 \) degrees
