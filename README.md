@@ -50,23 +50,67 @@ The comparison results of the parameters are shown in the following figure:
 
 
 
-## 1.3 Kinematic Algorithm (RTK with EKF)
+## 1.2 Kinematic Algorithm (RTK with EKF)
 
-### Parameters Tuned
+## Parameter Adjustments and Effects
+The adjusted parameters are shown in the figure below:
 
-- **AR Mode**: Continuous, Fix-and-Hold, Instantaneous
-- **AR Validation Threshold**: Ratio test threshold
-- **Process Noise**: Standard deviations for position, velocity
-- **Ionosphere/Troposphere Models**: Estimation options
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/setting1.png)
 
-### Effects
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/Kinematic/setting2.png)
 
-| Parameter | Accuracy | Processing Speed | Robustness |
-|-----------|----------|-----------------|------------|
-| AR Mode | Fix-and-Hold better in challenging environments; Continuous better in open-sky | Fix-and-Hold requires 5-10% more processing | Fix-and-Hold provides more continuous solutions but risks error propagation |
-| AR Threshold | Higher values (2.5-3.5) improve reliability but reduce fix percentage | Minimal impact | Lower values increase fix rate but risk incorrect solutions |
-| Process Noise | Lower values smoother; higher values track rapid movements better | Complex models increase computation by 10-15% | Higher values better track dynamic motion |
-| Multiple GNSS | Improves accuracy by 25-45% in obstructed environments | Each constellation adds 20-30% computation | Dramatically improves continuity in Urban environments |
+### Cycle Slip Detection Threshold (Slip Thresh: Doppler/Geom-Free)
+
+#### Configuration Changes:
+
+- Default: 0.000 Hz / 0.050 m
+- Alternative: 0.005 Hz / 0.100 m
+
+#### Expected Effects:
+
+- A Doppler threshold of 0.005 Hz (vs. 0.000 Hz) was expected to reduce false cycle slip detections, particularly in dynamic environments with vibration and acceleration changes.
+- Increasing the Geometry-Free carrier phase threshold from 0.050 m to 0.100 m was expected to maintain carrier phase observation continuity while potentially allowing some additional noise.
+
+#### Actual Results:
+
+- Contrary to expectations, the stricter threshold setting (0.000 Hz / 0.050 m) produced better results.
+- This suggests that in this urban dataset, the stricter cycle slip detection improved solution quality by effectively eliminating problematic measurements.
+
+### Maximum Age of Differential Corrections
+
+#### Configuration Changes:
+
+- Default: 10.0 seconds
+- Alternative: 5.0 seconds
+
+#### Expected Effects:
+
+- Reducing the maximum age from 10.0 to 5.0 seconds was expected to improve data timeliness in Kinematic mode, potentially enhancing precision and ambiguity resolution.
+- This adjustment might have increased solution failure rates depending on communication delays.
+
+#### Actual Results:
+
+- No significant difference was observed between the 10.0 and 5.0 second settings.
+- This suggests that the communication link was stable with delays consistently below 5.0 seconds, making this parameter adjustment less impactful for this dataset.
+
+### Minimum Satellites for Fixing/Holding Ambiguities
+
+#### Configuration Changes:
+
+- Default: 4 / 5 satellites
+- Alternative: 5 / 5 satellites
+
+#### Expected Effects:
+
+- Increasing the minimum satellite requirement for ambiguity resolution from 4 to 5 was expected to improve solution stability in dynamic environments.
+- This adjustment might have reduced solution availability in areas with limited satellite visibility.
+
+#### Actual Results:
+
+- No significant performance difference was observed between the two configurations.
+- This suggests that satellite availability was sufficient throughout the test area, with the number of visible satellites consistently above the threshold values in both configurations.
+
+
 
 ## 1.4 PPP-Kinematic Algorithm
 
