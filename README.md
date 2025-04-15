@@ -1,44 +1,44 @@
 # AAE6102_Laboratory_Group7
 # 1 Parameter Tuning and Effects
 
-This section details key parameters tuned for four RTKlib positioning algorithms and their effects on performance metrics across Urban and Dynamic datasets.
+This section details key parameters tuned for four RTKlib positioning algorithms and their effects on performance metrics across Urban dataset.
 
-## 1.1 Single Algorithm (Standard Point Positioning)
+## 1.1 DGPS Algorithm (Differential GPS)
 
-### Parameters Tuned
+## Parameter Adjustments and Effects
 
-- **Elevation Mask**: Minimum elevation angle for satellites
-- **SNR Mask**: Signal-to-noise ratio threshold
-- **Ionospheric/Tropospheric Models**: Klobuchar, IONEX, Saastamoinen, etc.
-- **Satellite Systems**: GPS, GLONASS, Galileo, BeiDou configurations
-- **Filter Type**: Forward or Combined
+### Reduction of Max Age of Differential Corrections (from 30.0s to 10.0s)
 
-### Effects
+#### Positive Effects:
 
-| Parameter | Accuracy | Processing Speed | Robustness |
-|-----------|----------|-----------------|------------|
-| Elevation Mask | Higher (15°-30°) reduces multipath errors but decreases satellite visibility | Higher values reduce computational load by 5-15% | Lower values (5°-10°) improve solution availability in obstructed environments |
-| SNR Mask | Higher thresholds improve solution quality but reduce available measurements | Higher values increase processing speed | Lower thresholds increase solution availability in challenging signal environments |
-| Correction Models | IONEX typically outperforms Klobuchar | Complex models increase processing time by 10-20% | Minimal impact on solution availability |
-| Multiple GNSS | Improves accuracy by 20-40% in difficult environments | Each system adds 15-25% computation time | Significantly improves continuity in Urban scenarios |
+- **Improved Positioning Accuracy**: Newer differential data reduces clock and orbital errors, potentially decreasing positioning bias from decimeter to centimeter level.
 
-## 1.2 DGPS Algorithm (Differential GPS)
+- **Enhanced Ambiguity Resolution Rate**: More current differential data aids ambiguity resolution, potentially transforming float solutions (Q=5) to fixed solutions (Q=1).
 
-### Parameters Tuned
+- **Reduced Systematic Errors**: Older differential data can introduce systematic biases; shorter delay times mitigate this issue.
 
-- **Base Station Selection**: Distance to rover and data quality
-- **Max Age of Differential**: Maximum age of differential corrections
-- **Correction Type**: Code-based or code+phase
-- **Satellite Systems**: GPS, GLONASS, Galileo, BeiDou combinations
+#### Potential Risks:
 
-### Effects
+- **Increased Solution Failure Rate**: If network delays frequently exceed 10 seconds, excessive differential data might be discarded, causing solution interruptions or convergence issues.
 
-| Parameter | Accuracy | Processing Speed | Robustness |
-|-----------|----------|-----------------|------------|
-| Base Station Distance | Degrades ~1-2cm per 10km increase | Minimal impact | Closer stations provide more reliable corrections |
-| Max Age of Differential | Values <30s optimal; >60s degrades performance | Larger values slightly reduce computation | Higher values (60-120s) maintain solutions during temporary outages |
-| Correction Type | Code+phase improves accuracy by 30-50% | Code+phase increases computation by 15-25% | Code+phase generally more sensitive to data quality |
-| Multiple GNSS | Improves accuracy by 20-40% in Urban areas | Each system adds 15-20% computation time | Significantly improves availability in obstructed environments |
+- **Higher Communication Requirements**: A more stable data transmission link (e.g., faster network or direct radio transmission) becomes necessary.
+
+### Adjustment of Outlier Threshold for Code/Phase (from 30.0/5.0m to 20.0/3.0m)
+
+#### Positive Effects:
+
+- **Enhanced Positioning Precision**: Stricter outlier detection eliminates anomalous observations caused by multipath effects and signal interference, reducing pseudorange and carrier phase noise. Pseudorange errors may decrease from meter to decimeter level, while carrier phase errors may reduce to centimeter level.
+
+- **Improved Ambiguity Resolution**: Reduced carrier phase noise facilitates ambiguity resolution, potentially converting float solutions (Q=5) to fixed solutions (Q=1).
+
+- **Greater Solution Stability**: Elimination of anomalous observations leads to more stable solutions and smoother trajectories.
+
+#### Potential Risks:
+
+- **Reduced Available Observations**: Lower thresholds might incorrectly classify valid observations as outliers, decreasing the number of usable satellites. However, with 14-16 satellites in the dataset, this impact may be minimal.
+
+- **Increased Solution Failure Risk**: In high-noise environments (e.g., urban canyons), excessive elimination of observations might lead to solution failures, which can be verified by examining changes in satellite count (ns) and quality factor (Q).
+
 
 ## 1.3 Kinematic Algorithm (RTK with EKF)
 
