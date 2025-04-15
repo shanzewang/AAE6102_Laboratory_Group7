@@ -110,18 +110,7 @@ This section details key parameters tuned for four RTKlib positioning algorithms
 - **Lack of Specific Features:** EKF requires careful tuning of noise parameters, and its performance can degrade if the model assumptions do not match the real-world scenario.
 
 
-## 2.3 PPP Kinematic (Precise Point Positioning)
-**Strengths:**
-- **Flexibility:** PPP does not rely on local base stations, making it ideal for remote or global applications where setting up infrastructure is impractical.
-- **Robustness:** By utilizing precise satellite orbit and clock data, PPP achieves high accuracy, making it suitable for scientific and surveying applications.
-- **Ease of Use:** With a single receiver setup, PPP reduces the complexity and cost associated with deploying multiple base stations.
-
-**Limitations:**
-- **Computational Efficiency:** The need for processing precise corrections and handling long convergence times can be demanding, particularly for real-time applications.
-- **Lack of Specific Features:** The initial convergence period can be lengthy, which may not be suitable for applications requiring immediate high accuracy.
-
-
-## 2.4 Single Algorithm (Standard Point Positioning)
+## 2.3 Single Algorithm (Standard Point Positioning)
 **Strengths:**
 - **Flexibility:** Standard Point Positioning is the most basic form of positioning, requiring only a GPS receiver, making it highly accessible and easy to deploy.
 - **Robustness:** Provides a basic level of robustness for general navigation tasks where high precision is not critical.
