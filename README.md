@@ -44,6 +44,11 @@ The adjusted parameters are shown in the figure below:
 
 - **Increased Solution Failure Risk**: In high-noise environments (e.g., urban canyons), excessive elimination of observations might lead to solution failures, which can be verified by examining changes in satellite count (ns) and quality factor (Q).
 
+The comparison results of the parameters are shown in the following figure:
+
+![image](https://github.com/shanzewang/AAE6102_Laboratory_Group7/blob/main/DGPSDGNSS/figs/compare.png)
+
+
 
 ## 1.3 Kinematic Algorithm (RTK with EKF)
 
