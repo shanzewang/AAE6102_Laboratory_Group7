@@ -222,7 +222,7 @@ The following table presents the mean, standard deviation (STD), and maximum err
 | Mask_20°      | 7.06               | 1.38              | 18.05             | 3.76                       | 5.35                     |
 
 
-# Conclusion: Parameter Tuning Recommendations for GNSS Processing
+# 1.5 Conclusion: Parameter Tuning Recommendations for GNSS Processing
 
 Based on our experimental results across different processing methods, we recommend the following parameter settings for optimal GNSS processing in urban environments:
 
